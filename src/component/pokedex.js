@@ -20,6 +20,7 @@ class Pokedex extends Component {
         {this.state.pokedex}
         <div>
           <button onClick={this.handleClick}> Open </button>
+          
         </div>
       </div>
     )
