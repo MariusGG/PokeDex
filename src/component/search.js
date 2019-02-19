@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Title from './title';
-import Pokemon from './pokemon_description';
+import Description from './pokemon_description';
 import Form from './form.js'
 
 
@@ -24,6 +24,12 @@ const name = e.target.elements.pokemon.value;
   const response = await api_call.json();
 
   console.log(response);
+  this.setState(){
+    id: response.id,
+    name: response.name,
+    weight: response.weight,
+    error: ""
+  }
 
 
 }
@@ -38,7 +44,12 @@ const name = e.target.elements.pokemon.value;
          <Form loadPokemon={this.getPokemon}/>
        </section>
        <main>
-         <Pokemon />
+         <Description
+          id={this.state.id}
+          name={this.state.name}
+          weight={this.state.weight}
+          error={this.state.error}
+           />
        </main>
 
 
