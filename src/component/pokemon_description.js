@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
-class Description extends Component {
+class Description extends Component{
 
   render () {
     return (
       <div>
-        {props.id && <p>Id: {props.id}}</p>
-        {props.name && <p>Name: {props.name}}</p>
-        {props.weight && <p>Weight: {props.weight}}</p>
+        {this.props.id && <p>Id: {this.props.id}</p>}
+        {this.props.name && <p>Name: {this.props.name.toUpperCase()}</p>}
+        {this.props.weight && <p>Weight: {this.props.weight}</p>}
+        {this.props.sprite && <img src={this.props.sprite} alt={this.props.name}/>}
+        {this.props.error && <p>{this.props.error}</p>}
       </div>
     )
   }

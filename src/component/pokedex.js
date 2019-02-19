@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import pokedex from '../resource/pokedek-closed.png';
 import pokedexOpen from '../resource/pokedek-opened.png';
 
-class Pokedex extends Component {
+class Pokedex extends Component{
   constructor(props) {
     super(props);
     this.state = {
@@ -18,9 +18,9 @@ class Pokedex extends Component {
     return (
       <div className='pokedexContainer'>
         {this.state.pokedex}
-        <div>
+        <div className="open-pokedex-btn">
           <button onClick={this.handleClick}> Open </button>
-          
+
         </div>
       </div>
     )

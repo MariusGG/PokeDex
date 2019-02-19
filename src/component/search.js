@@ -6,54 +6,61 @@ import Form from './form.js'
 
 class Search extends Component {
   state = {
-  id: undefined,
-  name: undefined,
-  weight: undefined,
-  error: undefined
-}
+    id: undefined,
+    name: undefined,
+    weight: undefined,
+    error: undefined,
+    sprite: undefined,
+  }
 
   getPokemon = async (e) => {
 
-e.preventDefault();
+    e.preventDefault();
 
-const name = e.target.elements.pokemon.value;
+    const name = e.target.elements.pokemon.value;
 
 
-  const api_call = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    const api_call = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
 
-  const response = await api_call.json();
+    const response = await api_call.json();
 
-  console.log(response);
-  this.setState(){
-    id: response.id,
-    name: response.name,
-    weight: response.weight,
-    error: ""
+    console.log(response);
+    if(name){
+      this.setState({
+        id: response.id,
+        name: response.name,
+        weight: response.weight,
+        error: "",
+        sprite: response.sprites.front_default
+      })
+    }else {
+      this.setState({
+        error: "Please search for a Pokemon..."
+      })
+    }
   }
 
-
-}
-
-   render() {
+  render() {
     return (
-     <div>
-       <header>
-         <Title />
-       </header>
-       <section>
-         <Form loadPokemon={this.getPokemon}/>
-       </section>
-       <main>
-         <Description
-          id={this.state.id}
-          name={this.state.name}
-          weight={this.state.weight}
-          error={this.state.error}
-           />
-       </main>
+      <div className="search-pokemon">
+        <header>
+          <Title />
+        </header>
+        <section>
+          <Form loadPokemon={this.getPokemon}/>
+        </section>
+        <main>
+          <Description
+            id={this.state.id}
+            name={this.state.name}
+            weight={this.state.weight}
+            error={this.state.error}
+            sprite={this.state.sprite}
+            />
+        </main>
 
 
-     </div>
+      </div>
     )
   }
 }
