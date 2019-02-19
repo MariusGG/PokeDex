@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Names from './components/names';
-import Form from './components/form';
-import Pokemon from './components/pokemon';
+import Title from './title';
+import Pokemon from './pokemon_description';
+import Form from './form.js'
 
 
 class Search extends Component {
@@ -32,7 +32,7 @@ const name = e.target.elements.pokemon.value;
     return (
      <div>
        <header>
-         <Names />
+         <Title />
        </header>
        <section>
          <Form loadPokemon={this.getPokemon}/>
