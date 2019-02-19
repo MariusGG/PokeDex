@@ -5,7 +5,7 @@ class Form extends Component {
   render() {
 
     return(
-      <form>
+      <form onSubmit={this.props.loadPokemon}>
         <input type="text" name="pokemon" placeholder="Pokemon..."/>
         <button>Get Pokemon</button>
       </form>
